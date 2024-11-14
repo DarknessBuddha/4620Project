@@ -27,7 +27,7 @@ INSERT INTO discount (discount_DiscountName, discount_Amount, discount_IsPercent
 VALUES ('Employee', 15, TRUE),
        ('Lunch Special Medium', 1, FALSE),
        ('Lunch Special Large', 2, FALSE),
-       ('Speciality Pizza', 1.5, FALSE),
+       ('Speciality pizza', 1.5, FALSE),
        ('Happy Hour', 10, TRUE),
        ('Gameday Special', 20, TRUE);
 
@@ -113,7 +113,7 @@ VALUES (@last_pizza_id, 13, FALSE), -- Regular Cheese
 
 -- march 3rd ---------------------------------------------
 INSERT INTO customer (customer_FName, customer_LName, customer_PhoneNum)
-VALUES ('Andrew', 'Wilkes-Krier', '864-254-5861');
+VALUES ('Andrew', 'Wilkes-Krier', '8642545861');
 SET @last_customer_id = LAST_INSERT_ID();
 INSERT INTO ordertable (customer_CustID, ordertable_OrderType, ordertable_OrderDateTime, ordertable_CustPrice,
                         ordertable_BusPrice, ordertable_isComplete)
@@ -170,7 +170,7 @@ INSERT INTO pizza_topping (pizza_PizzaID, topping_TopID, pizza_topping_IsDouble)
 
 -- april 20
 INSERT INTO ordertable (customer_CustID, ordertable_OrderType, ordertable_OrderDateTime, ordertable_CustPrice, ordertable_BusPrice, ordertable_isComplete)
-VALUES (@last_customer_id, 'delivery', '2024-04-20 19:11:00', 86.19, 23.62, TRUE);
+VALUES (@last_customer_id, 'delivery', '2024-04-20 19:11:00', 68.95, 23.62, TRUE);
 SET @last_order_id = LAST_INSERT_ID();
 
 INSERT INTO order_discount(ordertable_OrderID, discount_DiscountID)
@@ -219,7 +219,7 @@ VALUES (@last_pizza_id, 4, FALSE), -- Chicken
 
 -- march 2nd matt engers ---------------------------------------------
 INSERT INTO customer (customer_FName, customer_LName, customer_PhoneNum)
-VALUES ('Matt', 'Engers', '864-474-9953');
+VALUES ('Matt', 'Engers', '8644749953');
 SET @last_customer_id = LAST_INSERT_ID();
 
 INSERT INTO ordertable (customer_CustID, ordertable_OrderType, ordertable_OrderDateTime, ordertable_CustPrice,
@@ -246,17 +246,19 @@ VALUES (@last_pizza_id, 4);
 
 -- march 2nd frank turner --------------------------
 INSERT INTO customer (customer_FName, customer_LName, customer_PhoneNum)
-VALUES ('Frank', 'Turner', '864-232-8944');
+VALUES ('Frank', 'Turner', '8642328944');
 SET @last_customer_id = LAST_INSERT_ID();
 
 INSERT INTO ordertable (customer_CustID, ordertable_OrderType, ordertable_OrderDateTime, ordertable_CustPrice,
                         ordertable_BusPrice, ordertable_isComplete)
 VALUES (@last_customer_id, 'delivery', '2024-03-02 18:17:00', 25.81, 4.24, TRUE);
+SET @last_order_id = LAST_INSERT_ID();
 
 -- Insert the pizza for the order
 INSERT INTO pizza (pizza_Size, pizza_CrustType, pizza_PizzaState, pizza_PizzaDate, pizza_CustPrice, pizza_BusPrice, ordertable_OrderID)
 VALUES ('Large', 'Thin', 'Completed', '2024-03-02 18:17:00', 25.81, 4.24, @last_order_id);
 SET @last_pizza_id = LAST_INSERT_ID();
+
 
 -- Insert the toppings for the pizza
 INSERT INTO pizza_topping (pizza_PizzaID, topping_TopID, pizza_topping_IsDouble)
@@ -271,12 +273,14 @@ VALUES (@last_pizza_id, 4, FALSE),  -- Chicken
 -- april 13th ---------------------------
 
 INSERT INTO customer (customer_FName, customer_LName, customer_PhoneNum)
-VALUES ('Milo', 'Auckerman', '864-878-5679');
+VALUES ('Milo', 'Auckerman', '8648785679');
 SET @last_customer_id = LAST_INSERT_ID();
 
 INSERT INTO ordertable (customer_CustID, ordertable_OrderType, ordertable_OrderDateTime, ordertable_CustPrice,
                         ordertable_BusPrice, ordertable_isComplete)
-VALUES (@last_customer_id, 'delivery', '2024-04-13 20:32:00', 37.25, 6, TRUE);
+VALUES (@last_customer_id, 'delivery', '2024-04-13 20:32:00', 31.66, 6, TRUE);
+SET @last_order_id = LAST_INSERT_ID();
+
 
 -- Insert the first pizza (Four Cheese Blend on Thin Crust)
 INSERT INTO pizza (pizza_Size, pizza_CrustType, pizza_PizzaState, pizza_PizzaDate, pizza_CustPrice, pizza_BusPrice, ordertable_OrderID)
