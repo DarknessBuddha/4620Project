@@ -1,2 +1,0 @@
-#currently nothing
-USE pizzadb;

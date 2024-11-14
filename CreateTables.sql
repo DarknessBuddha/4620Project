@@ -1,3 +1,5 @@
+-- Ivan Lin and Don Tran
+
 DROP SCHEMA IF EXISTS PizzaDB;
 CREATE SCHEMA PizzaDB;
 USE PizzaDB;
@@ -37,7 +39,7 @@ CREATE TABLE ordertable (
     ordertable_OrderDateTime DATETIME NOT NULL,
     ordertable_CustPrice DECIMAL(5,2) NOT NULL,
     ordertable_BusPrice DECIMAL(5,2) NOT NULL,
-    ordertable_isComplete BOOLEAN,
+    ordertable_IsComplete BOOLEAN DEFAULT 0,
     CONSTRAINT ordertable_CustID_FK FOREIGN KEY(customer_CustID) REFERENCES customer(customer_CustID)
 );
 
@@ -95,7 +97,7 @@ CREATE TABLE order_discount (
 
 CREATE TABLE pickup (
     ordertable_OrderID INT,
-    pickup_IsPickedUp BOOLEAN NOT NULL,
+    pickup_IsPickedUp BOOLEAN NOT NULL DEFAULT 0,
     CONSTRAINT pickup_OrderID_PK PRIMARY KEY(ordertable_OrderID),
     CONSTRAINT pickup_OrderID_FK FOREIGN KEY(ordertable_OrderID) REFERENCES ordertable(ordertable_OrderID)
 );
@@ -107,7 +109,7 @@ CREATE TABLE delivery (
     delivery_City VARCHAR(30) NOT NULL,
     delivery_State VARCHAR(2) NOT NULL,
     delivery_Zip INT NOT NULL,
-    delivery_IsDelivered BOOLEAN,
+    delivery_IsDelivered BOOLEAN DEFAULT 0,
     CONSTRAINT delivery_OrderID_PK PRIMARY KEY(ordertable_OrderID),
     CONSTRAINT delivery_OrderID_FK FOREIGN KEY(ordertable_OrderID) REFERENCES ordertable(ordertable_OrderID)
 );
