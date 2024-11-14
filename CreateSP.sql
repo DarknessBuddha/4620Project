@@ -1,2 +1,2 @@
-#currently nothing
+-- Ivan Lin and Don Tran
 USE pizzadb;
