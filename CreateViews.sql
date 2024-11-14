@@ -51,8 +51,12 @@ CREATE VIEW ProfitByOrderType AS
     GROUP BY
         OrderMonth,
         ordertable.ordertable_OrderType
-    ORDER BY
-        ordertable.ordertable_OrderType desc ,
-        Profit
+
+    UNION ALL
+    SELECT '', 'Grand Total',
+           SUM(ordertable_CustPrice), SUM(ordertable_BusPrice), SUM(ordertable_CustPrice - ordertable_BusPrice)
+    FROM ordertable
+
 );
 
+SELECT * FROM ProfitByOrderType;

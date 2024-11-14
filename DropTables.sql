@@ -1,32 +1,33 @@
 -- Ivan Lin and Don Tran
 USE PizzaDB;
 
-DROP TABLE delivery;
+DROP TABLE IF EXISTS delivery;
 
-DROP TABLE dinein;
+DROP TABLE IF EXISTS dinein;
 
-DROP TABLE pickup;
+DROP TABLE IF EXISTS pickup;
 
-DROP TABLE pizza_discount;
+DROP TABLE IF EXISTS pizza_discount;
 
-DROP TABLE order_discount;
+DROP TABLE IF EXISTS order_discount;
 
-DROP TABLE discount;
+DROP TABLE IF EXISTS discount;
 
-DROP TABLE pizza_topping;
+DROP TABLE IF EXISTS pizza_topping;
 
-DROP TABLE topping;
+DROP TABLE IF EXISTS topping;
 
-DROP TABLE pizza;
+DROP TABLE IF EXISTS pizza;
 
-DROP TABLE ordertable;
+DROP TABLE IF EXISTS ordertable;
 
-DROP TABLE customer;
+DROP TABLE IF EXISTS customer;
 
-DROP TABLE baseprice;
+DROP TABLE IF EXISTS baseprice;
 
-DROP VIEW ToppingPopularity;
+DROP VIEW IF EXISTS ToppingPopularity;
 
-DROP view ProfitByPizza;
+DROP view IF EXISTS ProfitByPizza;
 
-DROP VIEW ProfitByOrderType;
+DROP VIEW IF EXISTS ProfitByOrderType;
+

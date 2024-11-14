@@ -109,7 +109,7 @@ CREATE TABLE delivery (
     delivery_City VARCHAR(30) NOT NULL,
     delivery_State VARCHAR(2) NOT NULL,
     delivery_Zip INT NOT NULL,
-    delivery_IsDelivered BOOLEAN DEFAULT 0,
+    delivery_IsDelivered BOOLEAN DEFAULT 0 NOT NULL,
     CONSTRAINT delivery_OrderID_PK PRIMARY KEY(ordertable_OrderID),
     CONSTRAINT delivery_OrderID_FK FOREIGN KEY(ordertable_OrderID) REFERENCES ordertable(ordertable_OrderID)
 );

@@ -27,7 +27,7 @@ INSERT INTO discount (discount_DiscountName, discount_Amount, discount_IsPercent
 VALUES ('Employee', 15, TRUE),
        ('Lunch Special Medium', 1, FALSE),
        ('Lunch Special Large', 2, FALSE),
-       ('Speciality pizza', 1.5, FALSE),
+       ('Specialty pizza', 1.5, FALSE),
        ('Happy Hour', 10, TRUE),
        ('Gameday Special', 20, TRUE);
 
@@ -55,6 +55,7 @@ INSERT INTO ordertable (customer_CustID, ordertable_OrderType, ordertable_OrderD
                         ordertable_BusPrice, ordertable_isComplete)
 VALUES (NULL, 'dinein', '2024-03-05 12:03:00', 19.75, 3.68, TRUE);
 SET @last_order_id = LAST_INSERT_ID();
+INSERT INTO dinein (ordertable_OrderID, dinein_TableNum) VALUES(@last_order_id, 21);
 
 INSERT INTO pizza (pizza_Size, pizza_CrustType, pizza_PizzaState, pizza_PizzaDate, pizza_CustPrice, pizza_BusPrice,
                    ordertable_OrderID)
@@ -83,22 +84,25 @@ INSERT INTO ordertable (customer_CustID, ordertable_OrderType, ordertable_OrderD
 VALUES (NULL, 'dinein', '2024-04-03 12:05:00', 19.78, 4.63, TRUE);
 SET @last_order_id = LAST_INSERT_ID();
 
+INSERT INTO dinein (ordertable_OrderID, dinein_TableNum) VALUES(@last_order_id, 4);
+
+INSERT INTO order_discount(ordertable_OrderID, discount_DiscountID) VALUES (@last_order_id, 2);
+
 INSERT INTO pizza (pizza_Size, pizza_CrustType, pizza_PizzaState, pizza_PizzaDate, pizza_CustPrice, pizza_BusPrice,
                    ordertable_OrderID)
 VALUES ('Medium', 'Pan', 'Completed', '2024-04-03 12:05:00', 12.85, 3.23, @last_order_id);
 SET @last_pizza_id = LAST_INSERT_ID();
 
 INSERT INTO pizza_topping (pizza_PizzaID, topping_TopID, pizza_topping_IsDouble)
-VALUES (@last_pizza_id, 3, FALSE), -- Feta Cheese
-       (@last_pizza_id, 7, FALSE), -- Black Olives
-       (@last_pizza_id, 8, FALSE), -- Roma Tomatoes
-       (@last_pizza_id, 4, FALSE), -- Mushrooms
+VALUES (@last_pizza_id, 15, FALSE), -- Feta Cheese
+       (@last_pizza_id, 9, FALSE), -- Black Olives
+       (@last_pizza_id, 7, FALSE), -- Roma Tomatoes
+       (@last_pizza_id, 8, FALSE), -- Mushrooms
        (@last_pizza_id, 12, FALSE); -- Banana Peppers
 
 INSERT INTO
     pizza_discount (pizza_PizzaID, discount_DiscountID)
-VALUES (@last_pizza_id, 2),
-       (@last_pizza_id, 4);
+VALUES (@last_pizza_id, 4);
 
 INSERT INTO pizza (pizza_Size, pizza_CrustType, pizza_PizzaState, pizza_PizzaDate, pizza_CustPrice, pizza_BusPrice,
                    ordertable_OrderID)
@@ -119,6 +123,8 @@ INSERT INTO ordertable (customer_CustID, ordertable_OrderType, ordertable_OrderD
                         ordertable_BusPrice, ordertable_isComplete)
 VALUES (@last_customer_id, 'pickup', '2024-03-03 21:30:00', 89.28, 19.80, TRUE);
 SET @last_order_id = LAST_INSERT_ID();
+
+INSERT INTO pickup (ordertable_OrderID, pickup_IsPickedUp) VALUES (@last_order_id, TRUE);
 
 -- pizza 1
 INSERT INTO pizza (pizza_Size, pizza_CrustType, pizza_PizzaState, pizza_PizzaDate, pizza_CustPrice, pizza_BusPrice, ordertable_OrderID)
@@ -172,6 +178,9 @@ INSERT INTO pizza_topping (pizza_PizzaID, topping_TopID, pizza_topping_IsDouble)
 INSERT INTO ordertable (customer_CustID, ordertable_OrderType, ordertable_OrderDateTime, ordertable_CustPrice, ordertable_BusPrice, ordertable_isComplete)
 VALUES (@last_customer_id, 'delivery', '2024-04-20 19:11:00', 68.95, 23.62, TRUE);
 SET @last_order_id = LAST_INSERT_ID();
+
+INSERT INTO delivery (ordertable_OrderID, delivery_HouseNum, delivery_Street, delivery_City, delivery_State, delivery_Zip)
+VALUES (@last_order_id, 115, 'Party Blvd', 'Anderson', 'SC', 29621);
 
 INSERT INTO order_discount(ordertable_OrderID, discount_DiscountID)
 VALUES (@last_order_id, 6);
@@ -227,6 +236,8 @@ INSERT INTO ordertable (customer_CustID, ordertable_OrderType, ordertable_OrderD
 VALUES (@last_customer_id, 'pickup', '2024-03-02 17:30:00', 27.45, 7.88, TRUE);
 SET @last_order_id = LAST_INSERT_ID();
 
+INSERT INTO pickup (ordertable_OrderID, pickup_IsPickedUp) VALUES (@last_order_id, TRUE);
+
 -- Insert the pizza for the order
 INSERT INTO pizza (pizza_Size, pizza_CrustType, pizza_PizzaState, pizza_PizzaDate, pizza_CustPrice, pizza_BusPrice, ordertable_OrderID)
 VALUES ('XLarge', 'Gluten-Free', 'Completed', '2024-03-02 17:30:00', 27.45, 7.88, @last_order_id);
@@ -253,6 +264,9 @@ INSERT INTO ordertable (customer_CustID, ordertable_OrderType, ordertable_OrderD
                         ordertable_BusPrice, ordertable_isComplete)
 VALUES (@last_customer_id, 'delivery', '2024-03-02 18:17:00', 25.81, 4.24, TRUE);
 SET @last_order_id = LAST_INSERT_ID();
+
+INSERT INTO delivery (ordertable_OrderID, delivery_HouseNum, delivery_Street, delivery_City, delivery_State, delivery_Zip)
+VALUES (@last_order_id, 6745, 'Wessex St', 'Anderson', 'SC', 29621);
 
 -- Insert the pizza for the order
 INSERT INTO pizza (pizza_Size, pizza_CrustType, pizza_PizzaState, pizza_PizzaDate, pizza_CustPrice, pizza_BusPrice, ordertable_OrderID)
@@ -281,6 +295,8 @@ INSERT INTO ordertable (customer_CustID, ordertable_OrderType, ordertable_OrderD
 VALUES (@last_customer_id, 'delivery', '2024-04-13 20:32:00', 31.66, 6, TRUE);
 SET @last_order_id = LAST_INSERT_ID();
 
+INSERT INTO delivery (ordertable_OrderID, delivery_HouseNum, delivery_Street, delivery_City, delivery_State, delivery_Zip)
+VALUES (@last_order_id, 8879, 'Suburban', 'Anderson', 'SC', 29621);
 
 -- Insert the first pizza (Four Cheese Blend on Thin Crust)
 INSERT INTO pizza (pizza_Size, pizza_CrustType, pizza_PizzaState, pizza_PizzaDate, pizza_CustPrice, pizza_BusPrice, ordertable_OrderID)
