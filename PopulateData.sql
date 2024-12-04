@@ -179,8 +179,8 @@ INSERT INTO ordertable (customer_CustID, ordertable_OrderType, ordertable_OrderD
 VALUES (@last_customer_id, 'delivery', '2024-04-20 19:11:00', 68.95, 23.62, TRUE);
 SET @last_order_id = LAST_INSERT_ID();
 
-INSERT INTO delivery (ordertable_OrderID, delivery_HouseNum, delivery_Street, delivery_City, delivery_State, delivery_Zip)
-VALUES (@last_order_id, 115, 'Party Blvd', 'Anderson', 'SC', 29621);
+INSERT INTO delivery (ordertable_OrderID, delivery_HouseNum, delivery_Street, delivery_City, delivery_State, delivery_Zip, delivery_IsDelivered)
+VALUES (@last_order_id, 115, 'Party Blvd', 'Anderson', 'SC', 29621, TRUE);
 
 INSERT INTO order_discount(ordertable_OrderID, discount_DiscountID)
 VALUES (@last_order_id, 6);
@@ -265,8 +265,8 @@ INSERT INTO ordertable (customer_CustID, ordertable_OrderType, ordertable_OrderD
 VALUES (@last_customer_id, 'delivery', '2024-03-02 18:17:00', 25.81, 4.24, TRUE);
 SET @last_order_id = LAST_INSERT_ID();
 
-INSERT INTO delivery (ordertable_OrderID, delivery_HouseNum, delivery_Street, delivery_City, delivery_State, delivery_Zip)
-VALUES (@last_order_id, 6745, 'Wessex St', 'Anderson', 'SC', 29621);
+INSERT INTO delivery (ordertable_OrderID, delivery_HouseNum, delivery_Street, delivery_City, delivery_State, delivery_Zip, delivery_IsDelivered)
+VALUES (@last_order_id, 6745, 'Wessex St', 'Anderson', 'SC', 29621, TRUE);
 
 -- Insert the pizza for the order
 INSERT INTO pizza (pizza_Size, pizza_CrustType, pizza_PizzaState, pizza_PizzaDate, pizza_CustPrice, pizza_BusPrice, ordertable_OrderID)
@@ -295,8 +295,8 @@ INSERT INTO ordertable (customer_CustID, ordertable_OrderType, ordertable_OrderD
 VALUES (@last_customer_id, 'delivery', '2024-04-13 20:32:00', 31.66, 6, TRUE);
 SET @last_order_id = LAST_INSERT_ID();
 
-INSERT INTO delivery (ordertable_OrderID, delivery_HouseNum, delivery_Street, delivery_City, delivery_State, delivery_Zip)
-VALUES (@last_order_id, 8879, 'Suburban', 'Anderson', 'SC', 29621);
+INSERT INTO delivery (ordertable_OrderID, delivery_HouseNum, delivery_Street, delivery_City, delivery_State, delivery_Zip, delivery_IsDelivered)
+VALUES (@last_order_id, 8879, 'Suburban', 'Anderson', 'SC', 29621, TRUE);
 
 -- Insert the first pizza (Four Cheese Blend on Thin Crust)
 INSERT INTO pizza (pizza_Size, pizza_CrustType, pizza_PizzaState, pizza_PizzaDate, pizza_CustPrice, pizza_BusPrice, ordertable_OrderID)
